@@ -141,7 +141,7 @@ int main() {
                                  // we need to put path of binary of this apps 
                                 std::thread t1(runScript, "./uart");
                                 std::thread t2(runScript, "./aws");
-                                std::thread t3(runScript, "python3 ./OSM/app.py");
+                                std::thread t3(runScript, "python3 ./OSM/request.py");
                                 
                                 t1.join();
                                 t2.join();
