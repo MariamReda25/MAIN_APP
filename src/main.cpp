@@ -99,6 +99,21 @@ int main() {
         return 1;
     }
 
+    // Configure UART
+    struct termios options;
+    tcgetattr(serial_fd, &options);
+    cfsetispeed(&options, BAUDRATE);
+    cfsetospeed(&options, BAUDRATE);
+    options.c_cflag |= (CLOCAL | CREAD);
+    options.c_cflag &= ~CSIZE;
+    options.c_cflag |= CS8;
+    options.c_cflag &= ~PARENB;
+    options.c_cflag &= ~CSTOPB;
+    options.c_cflag &= ~CRTSCTS;
+    options.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
+    options.c_iflag &= ~(IXON | IXOFF | IXANY);
+    options.c_oflag &= ~OPOST;
+    tcsetattr(serial_fd, TCSANOW, &options);
 
 
     char buffer[256];
@@ -141,7 +156,7 @@ int main() {
                                  // we need to put path of binary of this apps 
                                 std::thread t1(runScript, "./uart");
                                 std::thread t2(runScript, "./aws");
-                                std::thread t3(runScript, "python3 ./OSM/request.py");
+                                std::thread t3(runScript, "python3 ./OSM/requaet.py");
                                 
                                 t1.join();
                                 t2.join();
