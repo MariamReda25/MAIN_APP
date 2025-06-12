@@ -139,9 +139,9 @@ int main() {
                                 // Run AI scripts
                                 std::cout << "Running AI scripts..." << std::endl;
                                  // we need to put path of binary of this apps 
-                                std::thread t1(runScript, "/usr/bin/uart");
-                                std::thread t2(runScript, "/usr/bin/aws");
-                                std::thread t3(runScript, "python3 /usr/bin/OSM/app.py");
+                                std::thread t1(runScript, "./uart");
+                                std::thread t2(runScript, "./aws");
+                                std::thread t3(runScript, "python3 ./OSM/app.py");
                                 
                                 t1.join();
                                 t2.join();
