@@ -155,8 +155,8 @@ int main() {
                                 std::cout << "Running AI scripts..." << std::endl;
                                  // we need to put path of binary of this apps 
                                 std::thread t1(runScript, "/usr/bin/uart");
-                                std::thread t2(runScript, "/usr/bin/aws");
-                                std::thread t3(runScript, "python3 /usr/bin/OSM/requaet.py");
+                                std::thread t2(runScript, "/usr/bin/mqtt");
+                                std::thread t3(runScript, "python3 /usr/bin/OSM/request.py");
                                 
                                 t1.join();
                                 t2.join();
