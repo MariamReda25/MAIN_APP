@@ -156,11 +156,13 @@ int main() {
                                  // we need to put path of binary of this apps 
                                 std::thread t1(runScript, "/usr/bin/uart");
                                 std::thread t2(runScript, "/usr/bin/mqtt");
-                                std::thread t3(runScript, "python3 /usr/bin/OSM/request.py");
+                                std::thread t3(runScript, "/usr/bin/uart2");
+                                std::thread t4(runScript, "python3 /usr/bin/OSM/request.py");
                                 
                                 t1.join();
                                 t2.join();
                                 t3.join();
+                                t4.join();
 
                                 // Clear trigger file
                                 std::ofstream(AI_TRIGGER_FILE, std::ios::trunc).close();
